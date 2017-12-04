@@ -16,8 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyPatients" />
-        <activity android:name=".my_info"></activity>
+        <activity android:name=".MyPatientsActivity" />
+        <activity android:name=".PatientInfoActivity" />
+        <activity android:name=".UserHomeActivity" />
+        <activity android:name=".DoctorHomeActivity" />
+        <activity android:name=".AddEditPatientActivity" />
+        <activity android:name=".RefillRequestActivity" />
+        <activity android:name=".AddPrescriptionActivity" />
+        <activity android:name=".ViewPrescriptionsActivity"></activity>
     </application>
 
 </manifest>
