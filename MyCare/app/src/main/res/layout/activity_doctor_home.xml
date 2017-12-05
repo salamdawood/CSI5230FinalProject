@@ -14,14 +14,16 @@
         android:layout_marginTop="8dp"
         android:text="logout"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="16dp" />
 
     <Button
         android:id="@+id/patientsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="16dp"
         android:text="Patients"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -30,20 +32,24 @@
         android:id="@+id/refillsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="64dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="15dp"
         android:text="Refills"
-        app:layout_constraintLeft_toRightOf="@+id/patientsButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="64dp" />
+        app:layout_constraintLeft_toRightOf="@+id/patientsButton" />
 
     <Button
         android:id="@+id/addPrescriptionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Add Prescription"
-        app:layout_constraintLeft_toRightOf="@+id/refillsButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="64dp" />
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/patientsButton" />
 
 </android.support.constraint.ConstraintLayout>

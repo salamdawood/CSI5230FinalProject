@@ -1,5 +1,6 @@
 package edu.csi5230.salamdawood.mycare;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,8 @@ public class PatientInfoActivity extends AppCompatActivity {
 
     TextView firstNameTextView = null, lastNameTextView = null, DOBTextView = null;
     Button updateInfoButton = null;
+    Intent otherIntent = null;
+    int index = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,15 @@ public class PatientInfoActivity extends AppCompatActivity {
         DOBTextView = (TextView) findViewById(R.id.DOBTextView);
 
         updateInfoButton = (Button) findViewById(R.id.updateInfoButton);
+
+        otherIntent = getIntent();
+
+        if (otherIntent.hasExtra("index")){
+            index = otherIntent.getIntExtra("index", -1);
+            firstNameTextView.setText(otherIntent.getStringExtra("first"));
+            lastNameTextView.setText(otherIntent.getStringExtra("last"));
+            DOBTextView.setText(otherIntent.getStringExtra("dob"));
+        }
 
         updateInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override

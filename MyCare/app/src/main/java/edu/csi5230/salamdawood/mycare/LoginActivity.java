@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d(TAG, patient.getFirstName());
 
                     if (patient.getPassword().equals(password)){
+                        ((MyCareApplication) getApplication()).setCurrentPatient(patient);
                         Intent intent = new Intent(view.getContext(), UserHomeActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(intent);
@@ -58,6 +59,8 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d(TAG, doctor.getFirstName());
 
                     if (doctor.getPassword().equals(password)){
+                        ((MyCareApplication) getApplication()).setCurrentDoctor(doctor);
+
                         Intent intent = new Intent(view.getContext(), DoctorHomeActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(intent);
@@ -75,5 +78,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onDestroy() {
         AppDatabase.destroyInstance();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        usernameText.setText("");
+        passwordText.setText("");
     }
 }
