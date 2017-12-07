@@ -60,10 +60,10 @@ public class RefillRequestActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         // 2. Chain together various setter methods to set the dialog characteristics
-        builder.setMessage("Do you want to request a refill?")
-                .setTitle("Request Refill");
+        builder.setMessage("Approve or Deny refill Request?")
+                .setTitle("Refill Request");
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Approve", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Prescription prescription = db.prescriptionDao().findPrescriptionByID(prescriptionID);
                 prescription.setStatus("Approved");
@@ -74,7 +74,7 @@ public class RefillRequestActivity extends AppCompatActivity {
                 prescriptionID = -1;
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Deny", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Prescription prescription = db.prescriptionDao().findPrescriptionByID(prescriptionID);
                 prescription.setStatus("Denied, Call Doctor");

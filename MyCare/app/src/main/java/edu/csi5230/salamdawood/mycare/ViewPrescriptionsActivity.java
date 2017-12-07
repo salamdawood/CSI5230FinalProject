@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,8 +26,11 @@ public class ViewPrescriptionsActivity extends AppCompatActivity {
     ListView viewPrescriptionsListView = null;
 
     ArrayList<String> prescriptions = new ArrayList<>();
+    ArrayList<String> prescriptionStatus = new ArrayList<>();
     List<Prescription> prescriptionsQueryList = new ArrayList<>();
-    ArrayAdapter<String> adapter = null;
+    //ArrayAdapter<String> adapter = null;
+
+    StringAdapter adapter = null;
 
     final AppDatabase db = AppDatabase.getAppDatabase(this);
     int prescriptionID = -1;
@@ -44,18 +49,28 @@ public class ViewPrescriptionsActivity extends AppCompatActivity {
 
         createPrescriptionList(prescriptionsQueryList);
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, prescriptions);
+        adapter = new StringAdapter(this, prescriptions, prescriptionStatus);
+
+        //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, prescriptions);
 
         viewPrescriptionsListView.setAdapter(adapter);
 
         viewPrescriptionsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String prescriptionInfo = (String) viewPrescriptionsListView.getItemAtPosition(i);
+                ViewGroup group = (ViewGroup) view;
+                TextView textview = (TextView) group.getChildAt(0);
+
+                String prescriptionInfo = textview.getText().toString();
                 String[] splitPrescriptionInfo = prescriptionInfo.split(":");
                 prescriptionID = Integer.valueOf(splitPrescriptionInfo[0]);
 
+                Toast.makeText(getApplicationContext(), prescriptionInfo, Toast.LENGTH_SHORT).show();
+
                 dialog.show();
+
+//
+//                String data = textview.getText().toString();
             }
         });
 
@@ -92,6 +107,8 @@ public class ViewPrescriptionsActivity extends AppCompatActivity {
             prescriptions.add(prescription.getUid() + ": " +
                     prescription.getName() + " : Quantity "
                     + prescription.getQuantity());
+
+            prescriptionStatus.add("Status: " + prescription.getStatus());
         }
     }
 }
