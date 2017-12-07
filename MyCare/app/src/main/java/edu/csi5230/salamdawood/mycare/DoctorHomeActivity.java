@@ -32,7 +32,9 @@ public class DoctorHomeActivity extends AppCompatActivity {
         refillsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(view.getContext(), RefillRequestActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
             }
         });
 
