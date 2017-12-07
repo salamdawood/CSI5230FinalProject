@@ -28,7 +28,6 @@ public class ViewPrescriptionsActivity extends AppCompatActivity {
     ArrayList<String> prescriptions = new ArrayList<>();
     ArrayList<String> prescriptionStatus = new ArrayList<>();
     List<Prescription> prescriptionsQueryList = new ArrayList<>();
-    //ArrayAdapter<String> adapter = null;
 
     StringAdapter adapter = null;
 
@@ -51,8 +50,6 @@ public class ViewPrescriptionsActivity extends AppCompatActivity {
 
         adapter = new StringAdapter(this, prescriptions, prescriptionStatus);
 
-        //adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, prescriptions);
-
         viewPrescriptionsListView.setAdapter(adapter);
 
         viewPrescriptionsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,12 +62,8 @@ public class ViewPrescriptionsActivity extends AppCompatActivity {
                 String[] splitPrescriptionInfo = prescriptionInfo.split(":");
                 prescriptionID = Integer.valueOf(splitPrescriptionInfo[0]);
 
-                Toast.makeText(getApplicationContext(), prescriptionInfo, Toast.LENGTH_SHORT).show();
-
                 dialog.show();
 
-//
-//                String data = textview.getText().toString();
             }
         });
 

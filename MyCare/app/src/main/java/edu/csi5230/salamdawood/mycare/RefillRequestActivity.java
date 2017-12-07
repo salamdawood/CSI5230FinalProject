@@ -72,6 +72,8 @@ public class RefillRequestActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Request Approved", Toast.LENGTH_SHORT).show();
 
                 prescriptionID = -1;
+
+                updateList();
             }
         });
         builder.setNegativeButton("Deny", new DialogInterface.OnClickListener() {
@@ -83,6 +85,8 @@ public class RefillRequestActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Request Denied", Toast.LENGTH_SHORT).show();
 
                 prescriptionID = -1;
+
+                updateList();
             }
         });
 
@@ -97,5 +101,20 @@ public class RefillRequestActivity extends AppCompatActivity {
                     prescription.getName() + " : Quantity "
                     + prescription.getQuantity());
         }
+    }
+
+    void updateList(){
+        adapter.clear();
+        adapter.notifyDataSetChanged();
+
+        prescriptionsQueryList = db.prescriptionDao().
+                findPrescriptionRefillRequests(((MyCareApplication) getApplication()).
+                        getCurrentDoctor().getUid());
+
+        createPrescriptionList(prescriptionsQueryList);
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, prescriptions);
+
+        refillRequestsListView.setAdapter(adapter);
     }
 }
