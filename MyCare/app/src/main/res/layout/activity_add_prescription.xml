@@ -20,13 +20,10 @@
         android:layout_marginBottom="8dp"
         android:weightSum="1">
 
-        <EditText
-            android:id="@+id/patientEditText"
+        <Spinner
+            android:id="@+id/patientSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Patient"
-            android:inputType="textPersonName" />
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/prescriptionNameEditText"

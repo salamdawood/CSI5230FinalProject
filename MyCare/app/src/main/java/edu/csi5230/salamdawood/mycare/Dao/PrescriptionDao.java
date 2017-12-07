@@ -17,6 +17,9 @@ public interface PrescriptionDao {
     @Query("SELECT * FROM prescription")
     List<Prescription> getAll();
 
+    @Query("SELECT * FROM prescription where patient_id = :patientID")
+    List<Prescription> findPatientPrescriptions(int patientID);
+
     @Query("SELECT COUNT(*) from prescription")
     int countPrescription();
 

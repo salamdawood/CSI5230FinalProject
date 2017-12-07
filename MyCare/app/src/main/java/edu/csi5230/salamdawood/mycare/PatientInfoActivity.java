@@ -13,6 +13,7 @@ public class PatientInfoActivity extends AppCompatActivity {
     Button updateInfoButton = null;
     Intent otherIntent = null;
     int index = -1;
+    final AppDatabase db = AppDatabase.getAppDatabase(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
