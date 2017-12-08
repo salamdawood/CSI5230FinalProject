@@ -45,26 +45,26 @@ public class DatabaseInitializer {
 
     private static void populateWithTestData(AppDatabase db) {
         Doctor doctor = new Doctor();
-        doctor.setFirstName("Nilesh");
-        doctor.setLastName("Patel");
-        doctor.setPassword("opendoctor");
+        doctor.setFirstName("Dr");
+        doctor.setLastName("Evil");
+        doctor.setPassword("billion");
 
         addDoctor(db, doctor);
 
         List<Doctor> doctorList = db.doctorDao().getAll();
         Log.d(DatabaseInitializer.TAG, "Doctor Rows Count: " + doctorList.size());
 
-        Patient patient = new Patient();
-        patient.setFirstName("Salam");
-        patient.setLastName("Dawood");
-        patient.setDateOfBirth("01-02-2017");
-        patient.setPassword("open");
-        patient.setDoctorID(0);
-
-        addPatient(db, patient);
-
-        List<Patient> patientList = db.patientDao().getAll();
-        Log.d(DatabaseInitializer.TAG, "Patient Rows Count: " + patientList.size());
+//        Patient patient = new Patient();
+//        patient.setFirstName("Salam");
+//        patient.setLastName("Dawood");
+//        patient.setDateOfBirth("01-02-2017");
+//        patient.setPassword("open");
+//        patient.setDoctorID(0);
+//
+//        addPatient(db, patient);
+//
+//        List<Patient> patientList = db.patientDao().getAll();
+//        Log.d(DatabaseInitializer.TAG, "Patient Rows Count: " + patientList.size());
     }
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {

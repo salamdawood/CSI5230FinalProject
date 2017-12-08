@@ -67,9 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
 
-                //DatabaseInitializer.populateAsync(db);
-                //List<Patient> patients = db.patientDao().getAll();
-                //usernameText.setText(patients.get(0).getFirstName());
+//                DatabaseInitializer.populateAsync(db);
+
             }
         });
     }
